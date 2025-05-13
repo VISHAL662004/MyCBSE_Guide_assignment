@@ -42,24 +42,23 @@ fun HomeScreen(
             }
 
             else -> {
-                CategoryGrid(categories = viewModel.categories[0])
+                CategoryGrid(categories = viewModel.categories)
             }
         }
     }
 }
 
 @Composable
-private fun CategoryGrid(categories: Category) {
+private fun CategoryGrid(categories: List<Category>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-//        items(categories) { category ->
-//            CategoryCard(category = category)
-//        }
-        item { CategoryCard(category = categories) }
+        items(categories) { category ->
+            CategoryCard(category = category)
+        }
     }
 }
 
